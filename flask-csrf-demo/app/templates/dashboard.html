@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <p>Email: {{ email }}</p>
+    <form action="/update-email" method="POST">
+        <input type="email" name="new_email" required>
+        <button type="submit">Update Email</button>
+    </form>
+    <a href="/logout">Logout</a>
+</body>
+</html>
